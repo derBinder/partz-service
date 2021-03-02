@@ -22,11 +22,15 @@ public class PartService {
         return Optional.of(partRepository.findAll());
     }
 
-    public Optional<List<Part>> getPartsById(Long id) {
-        return Optional.of(partRepository.findAllById(id));
+    public Optional<Part> getPartById(Long id) {
+        return partRepository.findById(id);
     }
 
     public Optional<List<Part>> getPartsByName(String name) {
         return Optional.of(partRepository.findAllByNameContains(name));
+    }
+
+    public Optional<Part> createPart(Part part) {
+        return Optional.of(partRepository.save(part));
     }
 }
