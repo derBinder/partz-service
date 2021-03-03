@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class PartService {
@@ -22,7 +23,7 @@ public class PartService {
         return Optional.of(partRepository.findAll());
     }
 
-    public Optional<Part> getPartById(Long id) {
+    public Optional<Part> getPartById(UUID id) {
         return partRepository.findById(id);
     }
 

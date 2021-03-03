@@ -28,11 +28,12 @@ class PartServiceTest extends Specification {
 
     def "GetPartById"() {
         given:
-        def expected = Optional.of(new Part(id: 0))
-        partRepository.findById(0) >> expected
+        def uuid = UUID.randomUUID()
+        def expected = Optional.of(new Part(id: uuid))
+        partRepository.findById(uuid) >> expected
 
         when:
-        def actual = partService.getPartById(0)
+        def actual = partService.getPartById(uuid)
 
         then:
         actual == expected

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -14,9 +15,9 @@ import javax.persistence.*;
 public class Part {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "part_generator")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "part_generator")
     @Column(name = "ID", nullable = false, updatable = false)
-    private Long id;
+    private UUID id;
 
     @Column(name = "NAME")
     private String name;

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("v1")
@@ -29,7 +30,7 @@ public class PartController {
     }
 
     @GetMapping("parts/{id}")
-    public ResponseEntity<Part> getAllPartsById(@PathVariable("id") Long id) {
+    public ResponseEntity<Part> getAllPartsById(@PathVariable("id") UUID id) {
         return partService.getPartById(id)
                 .map(parts -> ResponseEntity.ok().body(parts))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.FORBIDDEN).build());

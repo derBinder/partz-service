@@ -36,11 +36,12 @@ class PartControllerTest extends Specification {
         actual.andExpect(status().isOk())
     }
 
-    def "GetAllPartsById"() {
+    def "GetPartById"() {
         given:
-        def url = "/v1/parts/1"
+        def uuid = UUID.randomUUID()
+        def url = "/v1/parts/" + uuid
         def expected = new Part();
-        partService.getPartById(1) >> Optional.of(expected);
+        partService.getPartById(uuid) >> Optional.of(expected);
 
         when:
         def actual = mvc.perform(get(url).contentType(MediaType.APPLICATION_JSON))
