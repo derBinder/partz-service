@@ -126,7 +126,7 @@
                 <configuration>
                     <excludes>
                         <exclude>de/derbinder/partzservice/configuration/**/*</exclude>
-                        <exclude>de/derbinder/partzservice/PartzServiceApplication.java</exclude>
+                        <exclude>de/derbinder/partzservice/PartzServiceApplication</exclude>
                     </excludes>
                 </configuration>
             </plugin>
