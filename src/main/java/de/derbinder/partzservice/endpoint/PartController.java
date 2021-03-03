@@ -43,7 +43,7 @@ public class PartController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.FORBIDDEN).build());
     }
 
-    @PostMapping("part")
+    @PostMapping("parts/create")
     public ResponseEntity<Part> createPart(@RequestBody Part part) {
         return partService.createPart(part)
                 .map(data -> ResponseEntity.ok().body(data))

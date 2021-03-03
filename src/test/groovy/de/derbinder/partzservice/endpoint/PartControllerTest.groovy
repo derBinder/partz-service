@@ -65,7 +65,7 @@ class PartControllerTest extends Specification {
 
     def "CreatePart"() {
         given:
-        def url = "/v1/part"
+        def url = "/v1/parts/create"
         def expected = new Part()
         partService.createPart(expected) >> Optional.of(expected)
 
