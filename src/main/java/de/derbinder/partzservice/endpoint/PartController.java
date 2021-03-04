@@ -1,7 +1,11 @@
 package de.derbinder.partzservice.endpoint;
 
+import de.derbinder.partzservice.endpoint.model.PartDto;
+import de.derbinder.partzservice.endpoint.model.PartsWithWeightDto;
 import de.derbinder.partzservice.entity.Part;
+import de.derbinder.partzservice.mapper.PartMapper;
 import de.derbinder.partzservice.service.PartService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,16 +20,18 @@ import java.util.UUID;
 public class PartController {
 
     private final PartService partService;
+    private final PartMapper partMapper;
 
     @Autowired
     public PartController(PartService partService) {
         this.partService = partService;
+        this.partMapper = new PartMapper();
     }
 
     @GetMapping("parts")
-    public ResponseEntity<List<Part>> getAllParts() {
+    public ResponseEntity<PartsWithWeightDto> getAllParts() {
         return partService.getAllParts()
-                .map(parts -> ResponseEntity.ok().body(parts))
+                .map(parts -> ResponseEntity.ok().body(partMapper.convertToDto(parts)))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.FORBIDDEN).build());
     }
 
