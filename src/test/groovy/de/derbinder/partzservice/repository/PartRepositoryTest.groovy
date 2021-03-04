@@ -6,7 +6,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import spock.lang.Specification
 
-@DataJpaTest
+@DataJpaTest()
 class PartRepositoryTest extends Specification {
 
     @Autowired
@@ -27,13 +27,8 @@ class PartRepositoryTest extends Specification {
     }
 
     def "FindAllByNameContains"() {
-        given:
-        entityManager.persistAndFlush(new Part(null, "Lenker", null, null))
-        entityManager.persistAndFlush(new Part(null, "Rahmen", null, null))
-        entityManager.persistAndFlush(new Part(null, "Kurbel", null, null))
-
         when:
-        def actual = partRepository.findAllByNameContains("en")
+        def actual = partRepository.findAllByNameContainsIgnoreCase("eN")
 
         then:
         actual.size() == 2

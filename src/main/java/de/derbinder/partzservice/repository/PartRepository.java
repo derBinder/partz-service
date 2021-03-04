@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface PartRepository extends JpaRepository<Part, UUID> {
 
-    List<Part> findAllByNameContains(String name);
+    List<Part> findAllByNameContainsIgnoreCase(String name);
 
     void deleteById(UUID id);
 }

@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class PartControllerTest extends Specification {
 
-    private ObjectMapper objectMapper;
+    private ObjectMapper objectMapper
     private MockMvc mvc
     private PartService partService = Mock()
 
@@ -26,7 +26,7 @@ class PartControllerTest extends Specification {
     def "GetAllParts"() {
         given:
         def url = "/v1/parts"
-        def expected = [];
+        def expected = []
         partService.getAllParts() >> Optional.of(expected);
 
         when:
@@ -40,7 +40,7 @@ class PartControllerTest extends Specification {
         given:
         def uuid = UUID.randomUUID()
         def url = "/v1/parts/" + uuid
-        def expected = new Part();
+        def expected = new Part()
         partService.getPartById(uuid) >> Optional.of(expected);
 
         when:
