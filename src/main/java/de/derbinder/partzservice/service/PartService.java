@@ -28,7 +28,7 @@ public class PartService {
     }
 
     public Optional<List<Part>> getPartsByName(String name) {
-        return Optional.of(partRepository.findAllByNameContains(name));
+        return Optional.of(partRepository.findAllByNameContainsIgnoreCase(name));
     }
 
     public Optional<Part> createPart(Part part) {

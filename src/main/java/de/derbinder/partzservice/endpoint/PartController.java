@@ -39,7 +39,6 @@ public class PartController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.FORBIDDEN).build());
     }
 
-    // TODO: Case insensitive
     @GetMapping("parts/search/{name}")
     public ResponseEntity<PartsWithWeightDto> getPartsByName(@PathVariable("name") String name) {
         return partService.getPartsByName(name)

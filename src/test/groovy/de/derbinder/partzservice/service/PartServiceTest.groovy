@@ -43,7 +43,7 @@ class PartServiceTest extends Specification {
     def "GetPartsByName"() {
         given:
         def expected = [new Part(name: "Lenker")]
-        partRepository.findAllByNameContains("en") >> expected
+        partRepository.findAllByNameContainsIgnoreCase("en") >> expected
 
         when:
         def actual = partService.getPartsByName("en")

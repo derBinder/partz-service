@@ -28,7 +28,7 @@ class PartRepositoryTest extends Specification {
 
     def "FindAllByNameContains"() {
         when:
-        def actual = partRepository.findAllByNameContains("en")
+        def actual = partRepository.findAllByNameContainsIgnoreCase("eN")
 
         then:
         actual.size() == 2
