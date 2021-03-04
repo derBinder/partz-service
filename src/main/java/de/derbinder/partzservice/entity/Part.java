@@ -1,16 +1,12 @@
 package de.derbinder.partzservice.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "Part")
 public class Part {
 

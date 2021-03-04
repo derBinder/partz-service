@@ -28,9 +28,9 @@ class PartRepositoryTest extends Specification {
 
     def "FindAllByNameContains"() {
         given:
-        entityManager.persistAndFlush(new Part(null, "Lenker", null, null))
-        entityManager.persistAndFlush(new Part(null, "Rahmen", null, null))
-        entityManager.persistAndFlush(new Part(null, "Kurbel", null, null))
+        entityManager.persistAndFlush(new Part(name: "Lenker"))
+        entityManager.persistAndFlush(new Part(name: "Rahmen"))
+        entityManager.persistAndFlush(new Part(name: "Kurbel"))
 
         when:
         def actual = partRepository.findAllByNameContains("en")
