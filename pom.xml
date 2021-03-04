@@ -131,6 +131,7 @@
                 <configuration>
                     <excludes>
                         <exclude>de/derbinder/partzservice/configuration/**/*</exclude>
+                        <exclude>de/derbinder/partzservice/endpoint/model/**/*</exclude>
                     </excludes>
                 </configuration>
             </plugin>
