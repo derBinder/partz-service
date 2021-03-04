@@ -16,7 +16,7 @@ public class PartMapper {
         modelMapper = new ModelMapper();
     }
 
-    public PartsWithWeightDto convertToDto(List<Part> parts) {
+    public PartsWithWeightDto convertPartsToDtoWithWeight(List<Part> parts) {
         PartsWithWeightDto partsWithWeightDto = new PartsWithWeightDto();
         PartDto[] partDtos = modelMapper.map(parts, PartDto[].class);
 
@@ -24,6 +24,14 @@ public class PartMapper {
         partsWithWeightDto.setCompleteWeight(calculateCompleteWeight(partDtos));
 
         return partsWithWeightDto;
+    }
+
+    public PartDto convertPartToDto(Part part) {
+        return modelMapper.map(part, PartDto.class);
+    }
+
+    public Part convertPartDtoToPart(PartDto partDto) {
+        return modelMapper.map(partDto, Part.class);
     }
 
     private Double calculateCompleteWeight(PartDto[] parts) {
